@@ -9,6 +9,25 @@ def query(sql, params=None):
     with connection.cursor() as cursor:
         cursor.execute(sql, params)
         return cursor.fetchall()
+
+@csrf_exempt
+def obtener_empleados(request):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT id, nombre FROM public.Empleado")
+        rows = cursor.fetchall()
+
+    empleados = [{'id': row[0], 'nombre': row[1]} for row in rows]
+    return JsonResponse(empleados, safe=False)
+
+@csrf_exempt
+def obtener_proveedor_invitado(request):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT id, nombre FROM public.proveedorinvitado")
+        rows = cursor.fetchall()
+
+    empleados = [{'id': row[0], 'nombre': row[1]} for row in rows]
+    return JsonResponse(empleados, safe=False)
+
 @csrf_exempt
 def registrar_entrada_salida(request):
     if request.method == 'POST':
@@ -17,8 +36,8 @@ def registrar_entrada_salida(request):
             persona_id = data.get('persona_id')
             tipo_persona = data.get('tipo_persona')
             hora_ingreso = data.get('hora_ingreso')
-            hora_salida = data.get('hora_salida', None)  # `hora_salida` es opcional
-            motivo_retiro = data.get('motivo_retiro', None)  # `motivo_retiro` es opcional
+            hora_salida = data.get('hora_salida', None)
+            motivo_retiro = data.get('motivo_retiro', None)
 
             if not persona_id or not tipo_persona or not hora_ingreso:
                 return HttpResponseBadRequest("Faltan datos necesarios.")
@@ -125,8 +144,6 @@ def eliminar_proveedor_invitado(request, pk):
                 """, [pk])
                 if not cursor.fetchone():
                     return HttpResponseBadRequest("Proveedor o invitado no encontrado.")
-
-                # Eliminar el proveedor o invitado de la base de datos
                 cursor.execute("""
                     DELETE FROM proveedorinvitado WHERE id = %s
                 """, [pk])
@@ -137,7 +154,6 @@ def eliminar_proveedor_invitado(request, pk):
 
     return HttpResponseBadRequest("Método no permitido.")
 
-# Reportar horas trabajadas por empleado
 @csrf_exempt
 def reportar_horas_empleado(request, pk, periodo):
     if request.method == 'GET':
@@ -158,7 +174,6 @@ def reportar_horas_empleado(request, pk, periodo):
                 cursor.execute(query, [pk, start_date, end_date])
                 rows = cursor.fetchall()
                 
-                # Convertir el resultado a un formato JSON
                 result = []
                 for row in rows:
                     result.append({
@@ -176,7 +191,6 @@ def reportar_horas_empleado(request, pk, periodo):
     return HttpResponseBadRequest("Método no permitido.")
 
 
-# Reportar horas trabajadas por área
 def reportar_horas_area(request, area, periodo):
     if request.method == 'GET':
         start_date = request.GET.get('start_date')
@@ -196,7 +210,6 @@ def reportar_horas_area(request, area, periodo):
                 cursor.execute(query, [area, start_date, end_date])
                 rows = cursor.fetchall()
                 
-                # Convertir el resultado a un formato JSON
                 reportes = [{'fecha': row[0], 'area': row[1], 'horas_trabajadas': row[2]} for row in rows]
                 
                 return JsonResponse(reportes, safe=False)
@@ -217,8 +230,6 @@ def reporte_personas_dentro(request):
             with connection.cursor() as cursor:
                 cursor.execute(query)
                 rows = cursor.fetchall()
-                
-                # Convertir el resultado a un formato JSON
                 personas_dentro = [{'tipo_persona': row[0], 'persona_id': row[1], 'nombre': row[2]} for row in rows]
                 
                 return JsonResponse(personas_dentro, safe=False)
