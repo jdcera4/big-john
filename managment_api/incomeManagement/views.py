@@ -84,15 +84,16 @@ def crear_proveedor_invitado(request):
             data = json.loads(request.body)
             nombre = data.get('nombre')
             documento_identidad = data.get('documento_identidad')
+            tipo_persona = data.get('tipo_persona')
 
             if not nombre or not documento_identidad:
                 return HttpResponseBadRequest("Faltan datos necesarios.")
 
             with connection.cursor() as cursor:
                 cursor.execute("""
-                    INSERT INTO proveedorinvitado (nombre, documento_identidad)
+                    INSERT INTO proveedorinvitado (nombre, documento_identidad, tipo_persona)
                     VALUES (%s, %s)
-                """, [nombre, documento_identidad])
+                """, [nombre, documento_identidad, tipo_persona])
 
             return JsonResponse({'status': 'success'})
         except json.JSONDecodeError:
