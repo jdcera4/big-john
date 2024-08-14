@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8000/';
+const BASE_URL = 'http://localhost:8000';
 
 async function fetchData(endpoint: string, options: RequestInit = {}) {
     const response = await fetch(`${BASE_URL}${endpoint}`, {
@@ -18,19 +18,23 @@ export async function getEmpleados() {
     return fetchData('/obtener_empleados');
 }
 
+export async function getEmpleadoId() {
+    return fetchData('empleados/${id}')
+}
+
 // Obtener proveedores o invitados
 export async function getProveedorInvitado() {
     return fetchData('/obtener_empleados');
 }
 
 // Obtener reporte de horas de un empleado
-export async function getReporteHorasEmpleado(id: number, periodo: string) {
-    return fetchData(`/reportar_horas_empleado/${id}/${periodo}`);
+export async function getReporteHorasEmpleado(id: number, periodo: string, startDate: string, endDate: string) {
+    return fetchData(`/reportar_horas_empleado/${id}/${periodo}/?start_date=${startDate}&end_date=${endDate}`);
 }
 
 // Obtener reporte de horas por área
 export async function getReporteHorasArea(area: string, startDate: string, endDate: string) {
-    return fetchData(`/reportar_horas_area/${area}?start_date=${startDate}&end_date=${endDate}`);
+    return fetchData(`/reportar_horas_area/${area}/?start_date=${startDate}&end_date=${endDate}`);
 }
 
 // Obtener personas en el edificio

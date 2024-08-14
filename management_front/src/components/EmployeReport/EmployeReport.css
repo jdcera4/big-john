@@ -1,0 +1,83 @@
+/* Estilos del overlay del modal */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999; /* Asegúrate de que el overlay tenga un z-index alto */
+}
+
+/* Estilos del modal */
+.modal {
+  position: relative;
+  width: 600px;
+  max-width: 90%;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Asegúrate de que el modal tenga un z-index mayor que el overlay */
+}
+
+/* Encabezado del modal */
+.modal-header {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Contenido del modal */
+.modal-content {
+  margin-bottom: 20px;
+}
+
+/* Tabla del modal */
+.modal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.modal-table th,
+.modal-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.modal-table th {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.modal-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Estilo del botón de cerrar */
+.modal-close-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 1em;
+}
+
+.modal-close-button:hover {
+  background-color: #0056b3;
+}
+
+/* Mensaje cuando no hay datos */
+.no-data {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+}
