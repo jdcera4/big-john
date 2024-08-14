@@ -60,12 +60,15 @@ export async function getReporteHorasEmpleado(id: number, periodo: string, start
 
 // Obtener reporte de horas por área
 export async function getReporteHorasArea(area: string, startDate: string, endDate: string) {
-    return fetchData(`/reportar_horas_area/${area}/?start_date=${startDate}&end_date=${endDate}`);
-}
+    const encodedArea = encodeURIComponent(area);
+    const url = `/reportar_horas_area/${encodedArea}/?start_date=${startDate}&end_date=${endDate}`;
+    return fetchData(url);
+  }
+  
 
 // Obtener personas en el edificio
 export async function getPersonasEnEdificio() {
-    return fetchData('/personas_en_edificio');
+    return fetchData('/reporte_personas_dentro');
 }
 
 // Registrar entrada o salida
