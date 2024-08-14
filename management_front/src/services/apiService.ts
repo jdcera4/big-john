@@ -76,7 +76,7 @@ export async function registrarEntradaSalida(data: {
     hora_salida?: string;
     motivo_retiro?: string;
 }) {
-    return fetchData('/registrar_entrada_salida', {
+    return fetchData('/registrar_entrada_salida/', {
         method: 'POST',
         body: JSON.stringify(data),
     });
