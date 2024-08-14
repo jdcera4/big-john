@@ -13,10 +13,10 @@ def query(sql, params=None):
 @csrf_exempt
 def obtener_empleados(request):
     with connection.cursor() as cursor:
-        cursor.execute("SELECT id, nombre FROM public.Empleado")
+        cursor.execute("SELECT id, nombre, documento_identidad FROM public.Empleado")
         rows = cursor.fetchall()
 
-    empleados = [{'id': row[0], 'nombre': row[1]} for row in rows]
+    empleados = [{'id': row[0], 'nombre': row[1], 'documento_identidad': row[2]} for row in rows]
     return JsonResponse(empleados, safe=False)
 
 @csrf_exempt
