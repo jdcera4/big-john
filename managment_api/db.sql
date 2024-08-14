@@ -89,7 +89,11 @@ SELECT
         WHEN 'ProveedorInvitado' THEN p.nombre
     END AS nombre_persona,
     r.tipo_persona,
-    r.hora_ingreso
+    r.hora_ingreso,
+    CASE r.tipo_persona
+        WHEN 'Empleado' THEN e.area
+        WHEN 'ProveedorInvitado' THEN NULL
+    END AS area
 FROM
     public.RegistroEntradaSalida r
     LEFT JOIN public.Empleado e ON r.persona_id = e.id

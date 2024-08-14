@@ -193,7 +193,7 @@ def reportar_horas_empleado(request, pk, periodo):
     return HttpResponseBadRequest("Método no permitido.")
 
 
-def reportar_horas_area(request, area, periodo):
+def reportar_horas_area(request, area):
     if request.method == 'GET':
         start_date = request.GET.get('start_date')
         end_date = request.GET.get('end_date')
@@ -212,7 +212,7 @@ def reportar_horas_area(request, area, periodo):
                 cursor.execute(query, [area, start_date, end_date])
                 rows = cursor.fetchall()
                 
-                reportes = [{'fecha': row[0], 'area': row[1], 'horas_trabajadas': row[2]} for row in rows]
+                reportes = [{'fecha': row[0].strftime('%Y-%m-%d'), 'area': row[1], 'horas_trabajadas': row[2]} for row in rows]
                 
                 return JsonResponse(reportes, safe=False)
         except Exception as e:
@@ -224,7 +224,7 @@ def reportar_horas_area(request, area, periodo):
 def reporte_personas_dentro(request):
     if request.method == 'GET':
         query = """
-            SELECT tipo_persona, persona_id, nombre_persona
+            SELECT tipo_persona, area, nombre_persona, hora_ingreso
             FROM public.PersonasEnEdificio;
         """
         
@@ -232,7 +232,7 @@ def reporte_personas_dentro(request):
             with connection.cursor() as cursor:
                 cursor.execute(query)
                 rows = cursor.fetchall()
-                personas_dentro = [{'tipo_persona': row[0], 'persona_id': row[1], 'nombre': row[2]} for row in rows]
+                personas_dentro = [{'tipo_persona': row[0], 'area': row[1], 'nombre': row[2], 'hora_ingreso': row[3]} for row in rows]
                 
                 return JsonResponse(personas_dentro, safe=False)
         except Exception as e:
