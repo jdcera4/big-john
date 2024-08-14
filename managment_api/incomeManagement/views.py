@@ -92,7 +92,7 @@ def crear_proveedor_invitado(request):
             with connection.cursor() as cursor:
                 cursor.execute("""
                     INSERT INTO proveedorinvitado (nombre, documento_identidad, tipo_persona)
-                    VALUES (%s, %s)
+                    VALUES (%s, %s, %s)
                 """, [nombre, documento_identidad, tipo_persona])
 
             return JsonResponse({'status': 'success'})
