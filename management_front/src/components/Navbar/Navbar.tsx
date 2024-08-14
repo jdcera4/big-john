@@ -15,7 +15,7 @@ const Navbar = () => {
       </button>
       <ul className={`navbar-links ${menuOpen ? 'active' : ''}`}>
         <li><a href="/empleados">Empleados</a></li>
-        <li><a href="/proveedores">Proveedores/Invitados</a></li>
+        <li><a href="/proveedores-invitados">Proveedores/Invitados</a></li>
         <li><a href="/informes">Informes</a></li>
         <li><a href="/registro">Registro Ingreso/Salida</a></li>
       </ul>
