@@ -18,13 +18,39 @@ export async function getEmpleados() {
     return fetchData('/obtener_empleados');
 }
 
-export async function getEmpleadoId() {
-    return fetchData('empleados/${id}')
-}
-
 // Obtener proveedores o invitados
 export async function getProveedorInvitado() {
-    return fetchData('/obtener_empleados');
+    return fetchData('/obtener_proveedor_invitado');
+}
+
+//Crear proveedor o invitado
+export async function createProveedorInvitado(data: {
+    nombre: string;
+    documento_identidad: string;
+    tipo_persona: string;
+}){
+    return fetchData('/crear_proveedor_invitado/', {
+        method: 'POST',
+        body: JSON.stringify(data),
+    });
+}
+
+//Actualizar Proveedor o invitado
+export async function updatedProveedorInvitado(data: {
+    nombre: string;
+    documento_identidad: string;
+    tipo_persona: string;
+}, id: number){
+    return fetchData(`/modificar_proveedor_invitado/${id}/`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+    });
+}
+
+export async function deleteProveedorInvitado (id: number){
+    return fetchData(`/eliminar_proveedor_invitado/${id}/`, {
+        method: 'POST'
+    });
 }
 
 // Obtener reporte de horas de un empleado

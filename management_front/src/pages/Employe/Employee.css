@@ -40,7 +40,7 @@ table tr:nth-child(even) {
 
 /* Estilo de los botones */
 .btn {
-  background-color: #bd0000;
+  background-color: #5ec2a8;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -51,15 +51,15 @@ table tr:nth-child(even) {
 }
 
 .btn:hover {
-  background-color: #bd0000;
+  background-color: #358d76;
 }
 
 .btn-primary {
-  background-color: #bd0000;
+  background-color: #5ec2a8;
 }
 
 .btn-primary:hover {
-  background-color: #800000;
+  background-color: #358d76;
 }
 
 /* Estilos del overlay del modal */
@@ -125,7 +125,7 @@ table tr:nth-child(even) {
 
 /* Estilo del botón de cerrar */
 .modal-close-button {
-  background-color: #bd0000;
+  background-color: #5ec2a8;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -136,7 +136,7 @@ table tr:nth-child(even) {
 }
 
 .modal-close-button:hover {
-  background-color: #bd0000;
+  background-color: #358d76;
 }
 
 /* Mensaje cuando no hay datos */

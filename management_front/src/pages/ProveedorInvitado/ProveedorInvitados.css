@@ -1,0 +1,46 @@
+/* Estilos para la página de proveedores/invitados */
+input, select {
+    margin: 10px;
+    padding: 8px;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 10px;
+    background-color: #5ec2a8;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #358d76;
+  }
+  
+  /* Estilos para los modales */
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+  }
+  
+  .overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  form input, form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+  }
+  
