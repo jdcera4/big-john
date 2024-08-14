@@ -110,6 +110,7 @@ def modificar_proveedor_invitado(request, pk):
             data = json.loads(request.body)
             nombre = data.get('nombre')
             documento_identidad = data.get('documento_identidad')
+            tipo_persona = data.get('tipo_persona')
 
             if not nombre or not documento_identidad:
                 return HttpResponseBadRequest("Faltan datos necesarios.")
@@ -123,9 +124,9 @@ def modificar_proveedor_invitado(request, pk):
 
                 cursor.execute("""
                     UPDATE proveedorinvitado
-                    SET nombre = %s, documento_identidad = %s
+                    SET nombre = %s, documento_identidad = %s, tipo_persona = %s
                     WHERE id = %s
-                """, [nombre, documento_identidad, pk])
+                """, [nombre, documento_identidad, tipo_persona, pk])
 
             return JsonResponse({'status': 'success'})
         except json.JSONDecodeError:
