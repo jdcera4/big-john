@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import EmployeesPage from './pages/Employe/Employee';
 import ProveedorInvitadoPage from './pages/ProveedorInvitado/ProveedorInvitado';
 import RegistroEntradaSalida from './pages/RegistroEntradaSalida/RegistroEntradaSalida';
+import ReportesPage from './pages/ReportesPage/ReportesPage';
 
 const App: React.FC = () => {
     return (
@@ -13,7 +14,7 @@ const App: React.FC = () => {
                 <Routes>
                     <Route path="/empleados" element={<EmployeesPage />} />
                     <Route path="/proveedores-invitados" element={<ProveedorInvitadoPage/>} />
-                    <Route path="/informes" element={<div>Informes</div>} />
+                    <Route path="/informes" element={<ReportesPage/>} />
                     <Route path="/registro-ingreso-salida" element={<RegistroEntradaSalida/>} />
                 </Routes>
             </div>

@@ -34,7 +34,7 @@ const RegistroEntradaSalida: React.FC = () => {
         await registrarEntradaSalida({
           persona_id: selectedPersona,
           tipo_persona: tipoPersona,
-          hora_ingreso: new Date().toISOString(), // Aseguramos que hora_ingreso sea una cadena
+          hora_ingreso: new Date().toISOString(),
           hora_salida: undefined,
         });
         alert('Entrada registrada con éxito');
@@ -46,16 +46,17 @@ const RegistroEntradaSalida: React.FC = () => {
 
   const handleRegistrarSalida = async () => {
     try {
-      const currentHour = new Date().getHours();
       if (selectedPersona) {
         await registrarEntradaSalida({
           persona_id: selectedPersona,
           tipo_persona: tipoPersona,
           hora_ingreso: new Date().toISOString(),
-          hora_salida: horaSalida ? new Date().toISOString() : undefined,
-          motivo_retiro: currentHour < 16 ? motivoRetiro : undefined,
+          hora_salida: horaSalida || new Date().toISOString(),
+          motivo_retiro: motivoRetiro || undefined,
         });
         alert('Salida registrada con éxito');
+        setHoraSalida(null);
+        setMotivoRetiro('');
       }
     } catch (error) {
       console.error('Error registrando salida:', error);
@@ -69,7 +70,7 @@ const RegistroEntradaSalida: React.FC = () => {
 
   const handleSalidaClick = () => {
     const currentHour = new Date().getHours();
-    setHoraSalida(new Date().toISOString()); // Establecemos la hora de salida como una cadena de texto
+    setHoraSalida(new Date().toISOString());
     if (currentHour < 16) {
       setMostrarMotivo(true);
     } else {
