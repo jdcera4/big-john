@@ -22,10 +22,10 @@ def obtener_empleados(request):
 @csrf_exempt
 def obtener_proveedor_invitado(request):
     with connection.cursor() as cursor:
-        cursor.execute("SELECT id, nombre FROM public.proveedorinvitado")
+        cursor.execute("SELECT id, nombre, documento_identidad, tipo_persona FROM public.proveedorinvitado")
         rows = cursor.fetchall()
 
-    empleados = [{'id': row[0], 'nombre': row[1]} for row in rows]
+    empleados = [{'id': row[0], 'nombre': row[1], 'documento_identidad': row[2], 'tipo_persona': row[3]} for row in rows]
     return JsonResponse(empleados, safe=False)
 
 @csrf_exempt
