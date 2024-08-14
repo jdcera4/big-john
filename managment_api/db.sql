@@ -96,3 +96,28 @@ FROM
     LEFT JOIN public.ProveedorInvitado p ON r.persona_id = p.id
 WHERE
     r.hora_salida IS NULL;
+
+
+INSERT INTO Empleado (Nombre, Area, documento_identidad)
+VALUES
+('Ana González', 'Recursos Humanos', '12345678'),
+('Luis Pérez', 'Tecnología', '23456789'),
+('Marta Fernández', 'Finanzas', '34567890'),
+('Carlos Rodríguez', 'Marketing', '45678901'),
+('Elena Martínez', 'Ventas', '56789012'),
+('Pedro López', 'Administración', '67890123'),
+('Isabel Romero', 'Atención al Cliente', '78901234'),
+('Jorge Díaz', 'Legal', '89012345'),
+('Laura Morales', 'Operaciones', '90123456'),
+('Francisco Jiménez', 'Compras', '01234567'),
+('Verónica Gómez', 'Producción', '12345679'),
+('David Sánchez', 'Investigación y Desarrollo', '23456780'),
+('Sofía Ruiz', 'Calidad', '34567891'),
+('Raúl Castillo', 'Logística', '45678902'),
+('Claudia Vargas', 'Desarrollo de Negocios', '56789013'),
+('Antonio Ortega', 'Recursos Humanos', '67890124'),
+('Carmen Morales', 'Tecnología', '78901235'),
+('José Martínez', 'Finanzas', '89012346'),
+('Patricia López', 'Marketing', '90123457'),
+('Ricardo Fernández', 'Ventas', '01234568'),
+('María González', 'Administración', '12345680');
