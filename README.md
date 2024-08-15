@@ -52,4 +52,4 @@ El proyecto está organizado en un mono repositorio con dos principales director
 
 2. **Iniciar proyecto**:
     ```bash
-    python manage.py migrate
+    python manage.py runserver
