@@ -13,6 +13,13 @@ Este es un proyecto para gestionar la entrada y salida de empleados y proveedore
 - [Backend](#backend-1)
   - [Base de Datos](#base-de-datos)
 
+
+## Versiones
+
+- Python 3.12.2
+- pip 24.0
+- node v20.12.2
+
 ## Tecnologías Utilizadas
 
 - **Frontend**: React, TypeScript, CSS
