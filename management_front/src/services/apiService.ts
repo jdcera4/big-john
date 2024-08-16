@@ -87,5 +87,5 @@ export async function registrarEntradaSalida(data: {
 
 // Obtener listado de áreas
 export async function getAreas() {
-    return fetchData('/areas');
+    return fetchData('/obtener_areas');
 }
