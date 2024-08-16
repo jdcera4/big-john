@@ -1,13 +1,29 @@
-import React, { useState } from 'react';
-import { getReporteHorasArea } from '../../services/apiService';
+import React, { useState, useEffect } from 'react';
+import { getReporteHorasArea, getAreas } from '../../services/apiService';
 import ReporteHorasAreaPopup from '../ReporteHorasAreaPopup/ReporteHorasAreaPopup';
 
 const ReporteHorasArea: React.FC = () => {
   const [reportes, setReportes] = useState<any[]>([]);
+  const [areas, setAreas] = useState<any[]>([]); // Cambio a `any[]` si estás esperando objetos complejos
   const [areaSeleccionada, setAreaSeleccionada] = useState<string>('');
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
   const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
+
+  // Función para obtener las áreas desde la API
+  const fetchAreas = async () => {
+    try {
+      const data = await getAreas();
+      setAreas(data);
+    } catch (error) {
+      console.error('Error fetching áreas:', error);
+    }
+  };
+
+  // Llamar a la API para obtener las áreas cuando el componente se monta
+  useEffect(() => {
+    fetchAreas();
+  }, []);
 
   const fetchReportes = async () => {
     try {
@@ -30,21 +46,11 @@ const ReporteHorasArea: React.FC = () => {
         <label>Área:</label>
         <select value={areaSeleccionada} onChange={(e) => setAreaSeleccionada(e.target.value)}>
           <option value="">Seleccione un área</option>
-          <option value="Recursos Humanos">Recursos Humanos</option>
-          <option value="Tecnologia">Tecnología</option>
-          <option value="Finanzas">Finanzas</option>
-          <option value="Marketing">Marketing</option>
-          <option value="Ventas">Ventas</option>
-          <option value="Administracion">Administración</option>
-          <option value="Atencion al Cliente">Atención al Cliente</option>
-          <option value="Legal">Legal</option>
-          <option value="Operaciones">Operaciones</option>
-          <option value="Compras">Compras</option>
-          <option value="Produccion">Producción</option>
-          <option value="Investigacion y Desarrollo">Investigación y Desarrollo</option>
-          <option value="Calidad">Calidad</option>
-          <option value="Logistica">Logística</option>
-          <option value="Desarrollo de Negocios">Desarrollo de Negocios</option>
+          {areas.map((area) => (
+            <option key={area.id} value={area.nombre}>
+              {area.nombre}
+            </option>
+          ))}
         </select>
 
         <label>Fecha de Inicio:</label>

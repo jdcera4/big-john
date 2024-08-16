@@ -36,6 +36,9 @@ const RegistroEntradaSalida: React.FC = () => {
           tipo_persona: tipoPersona,
           hora_ingreso: new Date().toISOString(),
           hora_salida: undefined,
+          motivo_retiro: undefined,
+          empleado_id: tipoPersona === 'Empleado' ? selectedPersona : undefined,
+          proveedorinvitado_id: tipoPersona === 'ProveedorInvitado' ? selectedPersona : undefined
         });
         alert('Entrada registrada con éxito');
       }
@@ -53,6 +56,8 @@ const RegistroEntradaSalida: React.FC = () => {
           hora_ingreso: new Date().toISOString(),
           hora_salida: horaSalida || new Date().toISOString(),
           motivo_retiro: motivoRetiro || undefined,
+          empleado_id: tipoPersona === 'Empleado' ? selectedPersona : undefined,
+          proveedorinvitado_id: tipoPersona === 'ProveedorInvitado' ? selectedPersona : undefined
         });
         alert('Salida registrada con éxito');
         setHoraSalida(null);

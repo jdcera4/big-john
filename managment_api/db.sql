@@ -15,11 +15,11 @@ CREATE TABLE IF NOT EXISTS public.Empleado (
 );
 
 -- Crear la tabla 'ProveedorInvitado' si no existe
-CREATE TABLE IF NOT EXISTS public.ProveedorInvitado (
-    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    nombre TEXT NOT NULL,
-    documento_identidad VARCHAR(50) NOT NULL
-);
+DO $$ BEGIN
+    CREATE TYPE tipo_persona_enum AS ENUM ('Empleado', 'Proveedor', 'Invitado');
+EXCEPTION
+    WHEN duplicate_object THEN NULL;
+END $$;
 
 -- Crear el tipo ENUM para 'tipo_persona' si no existe
 DO $$ 

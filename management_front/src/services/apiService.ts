@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'http://localhost:8000'; //Iria en archivo .env
 
 async function fetchData(endpoint: string, options: RequestInit = {}) {
     const response = await fetch(`${BASE_URL}${endpoint}`, {
@@ -77,6 +77,8 @@ export async function registrarEntradaSalida(data: {
     tipo_persona: string;
     hora_ingreso: string;
     hora_salida?: string;
+    empleado_id?: number;
+    proveedorinvitado_id?: number;
     motivo_retiro?: string;
 }) {
     return fetchData('/registrar_entrada_salida/', {

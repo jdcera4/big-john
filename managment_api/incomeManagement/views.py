@@ -59,6 +59,15 @@ def registrar_entrada_salida(request):
             if tipo_persona not in ['Empleado', 'ProveedorInvitado']:
                 return HttpResponseBadRequest("Tipo de persona inválido.")
 
+            empleado_id = data.get('empleado_id', None)
+            proveedorinvitado_id = data.get('proveedorinvitado_id', None)
+
+            # Validación adicional
+            if tipo_persona == 'Empleado' and not empleado_id:
+                return HttpResponseBadRequest("Falta el ID del empleado.")
+            if tipo_persona == 'ProveedorInvitado' and not proveedorinvitado_id:
+                return HttpResponseBadRequest("Falta el ID del proveedor/invitado.")
+
             with connection.cursor() as cursor:
                 cursor.execute("""
                     SELECT id FROM registroentradasalida
@@ -74,9 +83,9 @@ def registrar_entrada_salida(request):
                     """, [hora_salida, motivo_retiro, existing_record[0]])
                 else:
                     cursor.execute("""
-                        INSERT INTO registroentradasalida (persona_id, tipo_persona, hora_ingreso, hora_salida, motivo_retiro)
-                        VALUES (%s, %s, %s, %s, %s)
-                    """, [persona_id, tipo_persona, hora_ingreso, hora_salida, motivo_retiro])
+                        INSERT INTO registroentradasalida (persona_id, tipo_persona, hora_ingreso, hora_salida, motivo_retiro, empleado_id, proveedorinvitado_id)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s)
+                    """, [persona_id, tipo_persona, hora_ingreso, hora_salida, motivo_retiro, empleado_id, proveedorinvitado_id])
 
             return JsonResponse({'status': 'success'})
         except json.JSONDecodeError:

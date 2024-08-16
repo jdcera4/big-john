@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'api_finanzas.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
+# Esta informacion y configuracion viene de variables de entorno para seguridad
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
