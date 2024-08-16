@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { getReporteHorasArea } from '../../services/apiService';
+import ReporteHorasAreaPopup from '../ReporteHorasAreaPopup/ReporteHorasAreaPopup';
 
 const ReporteHorasArea: React.FC = () => {
   const [reportes, setReportes] = useState<any[]>([]);
   const [areaSeleccionada, setAreaSeleccionada] = useState<string>('');
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
+  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
 
   const fetchReportes = async () => {
     try {
       if (areaSeleccionada && startDate && endDate) {
-        console.log(areaSeleccionada)
-        console.log(startDate)
-        console.log(endDate)
         const data = await getReporteHorasArea(areaSeleccionada, startDate, endDate);
         setReportes(data);
+        setIsPopupOpen(true);
       } else {
         alert('Por favor, selecciona todos los filtros.');
       }
@@ -22,12 +22,6 @@ const ReporteHorasArea: React.FC = () => {
       console.error('Error fetching reportes de horas por área:', error);
     }
   };
-
-  useEffect(() => {
-    if (startDate && endDate && areaSeleccionada) {
-      fetchReportes();
-    }
-  }, [startDate, endDate, areaSeleccionada]);
 
   return (
     <div className="reporte-container">
@@ -69,23 +63,11 @@ const ReporteHorasArea: React.FC = () => {
 
         <button onClick={fetchReportes} className="btn btn-primary">Generar Reporte</button>
       </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Área</th>
-            <th>Horas Trabajadas</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reportes.map((reporte) => (
-            <tr key={reporte.area}>
-              <td>{reporte.area}</td>
-              <td>{reporte.horas_trabajadas}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <ReporteHorasAreaPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        reportes={reportes}
+      />
     </div>
   );
 };

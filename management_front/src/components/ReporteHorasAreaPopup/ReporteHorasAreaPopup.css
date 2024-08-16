@@ -1,0 +1,66 @@
+.reporte-horas-area-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.reporte-horas-area-modal {
+    width: 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}  
+
+.reporte-horas-area-modal h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #333;
+}
+  
+.reporte-horas-area-modal table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+  
+.reporte-horas-area-modal th,
+.reporte-horas-area-modal td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+  
+.reporte-horas-area-modal th {
+    background-color: red;
+}
+  
+.reporte-horas-area-modal p {
+    text-align: center;
+    color: #777;
+    margin: 20px 0;
+}
+  
+.modal-close-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+  
+.modal-close-button button {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+  

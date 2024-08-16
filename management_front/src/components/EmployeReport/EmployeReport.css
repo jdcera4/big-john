@@ -9,10 +9,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999; /* Asegúrate de que el overlay tenga un z-index alto */
+  z-index: 999;
 }
 
-/* Estilos del modal */
 .modal {
   position: relative;
   width: 600px;
@@ -21,22 +20,19 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* Asegúrate de que el modal tenga un z-index mayor que el overlay */
+  z-index: 1000;
 }
 
-/* Encabezado del modal */
 .modal-header {
   font-size: 1.5em;
   margin-bottom: 15px;
   color: #333;
 }
 
-/* Contenido del modal */
 .modal-content {
   margin-bottom: 20px;
 }
 
-/* Tabla del modal */
 .modal-table {
   width: 100%;
   border-collapse: collapse;
@@ -59,7 +55,6 @@
   background-color: #f9f9f9;
 }
 
-/* Estilo del botón de cerrar */
 .modal-close-button {
   background-color: #007bff;
   color: white;
@@ -75,7 +70,6 @@
   background-color: #0056b3;
 }
 
-/* Mensaje cuando no hay datos */
 .no-data {
   text-align: center;
   color: #999;

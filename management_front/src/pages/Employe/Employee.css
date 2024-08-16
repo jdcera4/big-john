@@ -1,10 +1,8 @@
-/* Estilos generales de la página de empleados */
 div {
   font-family: Arial, sans-serif;
   margin: 20px;
 }
 
-/* Estilos del input de búsqueda */
 input[type="text"] {
   padding: 10px;
   font-size: 1em;
@@ -15,7 +13,6 @@ input[type="text"] {
   margin-bottom: 20px;
 }
 
-/* Estilos de la tabla */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -38,7 +35,6 @@ table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-/* Estilo de los botones */
 .btn {
   background-color: #5ec2a8;
   color: white;
@@ -62,7 +58,6 @@ table tr:nth-child(even) {
   background-color: #358d76;
 }
 
-/* Estilos del overlay del modal */
 .overlay {
   position: fixed;
   top: 0;
@@ -73,10 +68,9 @@ table tr:nth-child(even) {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999; /* Asegúrate de que el overlay tenga un z-index alto */
+  z-index: 999;
 }
 
-/* Estilos del modal */
 .modal {
   position: relative;
   width: 600px;
@@ -85,22 +79,19 @@ table tr:nth-child(even) {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* Asegúrate de que el modal tenga un z-index mayor que el overlay */
+  z-index: 1000;
 }
 
-/* Encabezado del modal */
 .modal-header {
   font-size: 1.5em;
   margin-bottom: 15px;
   color: #333;
 }
 
-/* Contenido del modal */
 .modal-content {
   margin-bottom: 20px;
 }
 
-/* Tabla del modal */
 .modal-table {
   width: 100%;
   border-collapse: collapse;
@@ -123,7 +114,6 @@ table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-/* Estilo del botón de cerrar */
 .modal-close-button {
   background-color: #5ec2a8;
   color: white;
@@ -139,13 +129,11 @@ table tr:nth-child(even) {
   background-color: #358d76;
 }
 
-/* Mensaje cuando no hay datos */
 .no-data {
   text-align: center;
   color: #999;
   font-style: italic;
 }
-
 
 .date-picker-container {
   margin: 20px 0;
