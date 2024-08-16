@@ -115,7 +115,7 @@ const ProveedorInvitadoPage: React.FC = () => {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>Nombre</th>
             <th>Documento de Identidad</th>
             <th>Tipo de Persona</th>
@@ -124,9 +124,9 @@ const ProveedorInvitadoPage: React.FC = () => {
         </thead>
         <tbody>
           {filteredProveedores.length > 0 ? (
-            filteredProveedores.map((proveedor) => (
+            filteredProveedores.map((proveedor, index) => (
               <tr key={proveedor.id}>
-                <td>{proveedor.id}</td>
+                <td>{index + 1}</td>
                 <td>{proveedor.nombre}</td>
                 <td>{proveedor.documento_identidad}</td>
                 <td>{proveedor.tipo_persona}</td>

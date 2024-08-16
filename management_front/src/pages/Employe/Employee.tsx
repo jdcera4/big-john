@@ -74,7 +74,7 @@ const EmployeesPage: React.FC = () => {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
+              <th>#</th>
               <th>Nombre</th>
               <th>Documento de Identidad</th>
               <th>Acciones</th>
@@ -82,9 +82,9 @@ const EmployeesPage: React.FC = () => {
           </thead>
           <tbody>
             {filteredEmployees.length > 0 ? (
-              filteredEmployees.map((employee) => (
+              filteredEmployees.map((employee, index) => (
                 <tr key={employee.id}>
-                  <td>{employee.id}</td>
+                  <td>{index + 1}</td>
                   <td>{employee.nombre}</td>
                   <td>{employee.documento_identidad}</td>
                   <td>
