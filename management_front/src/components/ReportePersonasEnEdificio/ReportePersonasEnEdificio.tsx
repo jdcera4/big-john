@@ -31,7 +31,7 @@ const ReportePersonasEnEdificio: React.FC = () => {
       <h2>Reporte de Personas en el Edificio</h2>
       {loading && <p>Cargando...</p>}
 
-      {reportData.length > 0 && (
+      {reportData.length > 0 ? (
         <table className="report-table">
           <thead>
             <tr>
@@ -52,6 +52,8 @@ const ReportePersonasEnEdificio: React.FC = () => {
             ))}
           </tbody>
         </table>
+      ): (
+        <p>No hay personas en el edificio</p>
       )}
     </div>
   );
