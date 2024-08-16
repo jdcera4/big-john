@@ -10,5 +10,6 @@ urlpatterns = [
     path('reportar_horas_area/<str:area>/', views.reportar_horas_area, name='reportar_horas_area'),
     path('reporte_personas_dentro/', views.reporte_personas_dentro, name='reporte_personas_dentro'),
     path('obtener_empleados/', views.obtener_empleados, name='obtener_empleados'),
+    path('obtener_areas/', views.obtener_areas, name='obtener_areas'),
     path('obtener_proveedor_invitado/', views.obtener_proveedor_invitado, name='obtener_proveedor_invitado'),
 ]
