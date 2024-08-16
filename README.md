@@ -48,7 +48,12 @@ El proyecto está organizado en un mono repositorio con dos principales director
 1. **Instalación de Dependencias**:
    Navega al directorio `management_api` y ejecuta:
    ```bash
-   pip install -r requirements.txt
+    pip install django
+    pip install django-cors-headers
+    pip install djangorestframework
+    pip install psycopg2
+    pip freeze > requirements.txt
+    pip install -r requirements.txt
 
 2. **Iniciar proyecto**:
     ```bash
