@@ -10,7 +10,7 @@ def query(sql, params=None):
         cursor.execute(sql, params)
         return cursor.fetchall()
 
-@csrf_exempt
+
 def obtener_empleados(request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT id, nombre, documento_identidad FROM public.Empleado")
@@ -19,7 +19,6 @@ def obtener_empleados(request):
     empleados = [{'id': row[0], 'nombre': row[1], 'documento_identidad': row[2]} for row in rows]
     return JsonResponse(empleados, safe=False)
 
-@csrf_exempt
 def obtener_proveedor_invitado(request):
     with connection.cursor() as cursor:
         cursor.execute("SELECT id, nombre, documento_identidad, tipo_persona FROM public.proveedorinvitado")
@@ -156,7 +155,6 @@ def eliminar_proveedor_invitado(request, pk):
 
     return HttpResponseBadRequest("Método no permitido.")
 
-@csrf_exempt
 def reportar_horas_empleado(request, pk, periodo):
     if request.method == 'GET':
         start_date = request.GET.get('start_date')
