@@ -48,7 +48,7 @@ El proyecto está organizado en un mono repositorio con dos principales director
    npm install
 2. **Iniciar proyecto**:
     ```bash
-    npm run start
+    npm run dev
 
 ### Backend
 
